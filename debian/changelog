@@ -1,0 +1,20 @@
+golang-github-rickb777-date (1.15.3-1) unstable; urgency=medium
+
+  * New upstream release 1.15.3 (Closes: #982127)
+  * debian/control: Bump Standards-Version to 4.6.0.
+  * debian/copyright: Update copyright information.
+  * debian/upstream: Set upstream metadata fields.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Fri, 20 Aug 2021 17:10:16 +0545
+
+golang-github-rickb777-date (1.14.0-2) unstable; urgency=medium
+
+  * Source only upload for migration to testing.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Thu, 29 Oct 2020 18:34:40 +0545
+
+golang-github-rickb777-date (1.14.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #969455)
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Wed, 23 Sep 2020 23:34:33 +0545
