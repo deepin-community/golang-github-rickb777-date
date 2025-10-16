@@ -1,3 +1,19 @@
+golang-github-rickb777-date (1.20.1-1) unstable; urgency=medium
+
+  * New upstream release 1.20.1.
+  * debian/control:
+    + Bump Standards version to 4.6.2.
+    + Add tzdata to build dependency. (Closes: #1027910)
+
+ -- Arun Kumar Pariyar <arun@debian.org>  Thu, 05 Jan 2023 20:20:19 +0545
+
+golang-github-rickb777-date (1.19.1-1) unstable; urgency=medium
+
+  * New upstream release 1.19.1.
+  * debian/control: Bump Standards-Version to 4.6.1.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Mon, 06 Jun 2022 23:02:58 +0545
+
 golang-github-rickb777-date (1.15.3-1) unstable; urgency=medium
 
   * New upstream release 1.15.3 (Closes: #982127)
