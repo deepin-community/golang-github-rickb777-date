@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func TestGobEncoding(t *testing.T) {
+func TestDate_gob_Encode_round_tripe(t *testing.T) {
 	cases := []Date{
 		New(-11111, time.February, 3),
 		New(-1, time.December, 31),
@@ -55,7 +55,7 @@ func TestGobEncoding(t *testing.T) {
 	}
 }
 
-func TestDateJSONMarshalling(t *testing.T) {
+func TestDate_MarshalJSON_round_trip(t *testing.T) {
 	cases := []struct {
 		value Date
 		want  string
@@ -84,6 +84,7 @@ func TestDateJSONMarshalling(t *testing.T) {
 			}
 		}
 
+		// consistency
 		var ds DateString
 		bb2, err := json.Marshal(c.value.DateString())
 		if err != nil {
@@ -101,7 +102,7 @@ func TestDateJSONMarshalling(t *testing.T) {
 	}
 }
 
-func TestDateTextMarshalling(t *testing.T) {
+func TestDate_MarshalText_round_trip(t *testing.T) {
 	cases := []struct {
 		value Date
 		want  string
@@ -120,7 +121,7 @@ func TestDateTextMarshalling(t *testing.T) {
 		if err != nil {
 			t.Errorf("Text(%v) marshal error %v", c, err)
 		} else if string(bb1) != c.want {
-			t.Errorf("Text(%v) == %v, want %v", c.value, string(bb1), c.want)
+			t.Errorf("Text(%v) == %q, want %q", c.value, string(bb1), c.want)
 		} else {
 			err = d.UnmarshalText(bb1)
 			if err != nil {
@@ -130,12 +131,13 @@ func TestDateTextMarshalling(t *testing.T) {
 			}
 		}
 
+		// consistency
 		var ds DateString
 		bb2, err := c.value.DateString().MarshalText()
 		if err != nil {
 			t.Errorf("Text(%v) marshal error %v", c, err)
 		} else if string(bb2) != c.want {
-			t.Errorf("Text(%v) == %v, want %v", c.value, string(bb2), c.want)
+			t.Errorf("Text(%v) == %v, want %q", c.value, string(bb2), c.want)
 		} else {
 			err = ds.UnmarshalText(bb2)
 			if err != nil {
@@ -147,7 +149,7 @@ func TestDateTextMarshalling(t *testing.T) {
 	}
 }
 
-func TestDateBinaryMarshalling(t *testing.T) {
+func TestDate_MarshalBinary_round_trip(t *testing.T) {
 	cases := []struct {
 		value Date
 	}{
@@ -173,6 +175,7 @@ func TestDateBinaryMarshalling(t *testing.T) {
 			}
 		}
 
+		// consistency check
 		bb2, err := c.value.MarshalBinary()
 		if err != nil {
 			t.Errorf("Binary(%v) marshal error %v", c, err)
@@ -188,7 +191,7 @@ func TestDateBinaryMarshalling(t *testing.T) {
 	}
 }
 
-func TestDateBinaryUnmarshallingErrors(t *testing.T) {
+func TestDate_UnmarshalBinary_errors(t *testing.T) {
 	var d Date
 	err1 := d.UnmarshalBinary([]byte{})
 	if err1 == nil {
@@ -201,7 +204,7 @@ func TestDateBinaryUnmarshallingErrors(t *testing.T) {
 	}
 }
 
-func TestInvalidDateText(t *testing.T) {
+func TestDate_UnmarshalText_invalid_date_text(t *testing.T) {
 	cases := []struct {
 		value string
 		want  string
